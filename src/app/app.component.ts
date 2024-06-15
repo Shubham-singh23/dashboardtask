@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ConstantsService } from './services/constants/constants.service';
+import { CacheService } from './services/cache/cache.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Dashboard';
+  constructor(
+    public constant : ConstantsService,
+    public cache : CacheService
+  ){}
 }
