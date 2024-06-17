@@ -9,23 +9,38 @@ export class ConstantsService {
 
   public sidebarMenu = [
     {
-      name:'Admin',
+      displayName:'Admin',
       id:'admin'
     },{
-      name:'Reception',
+      displayName:'Reception',
       id:'reception'
     },{
-      name:'Surgery',
+      displayName:'Surgery',
       id:'surgery'
     },{
-      name:'Andrology',
+      displayName:'Andrology',
       id:'andrology'
     },{
-      name:'Embriology',
+      displayName:'Embriology',
       id:'embriology'
     },{
-      name:'Configrations',
+      displayName:'Configrations',
       id:'configrations'
     }
   ];
+
+  public showBy = [
+    {
+      displayName:'Day',
+      id:'day'
+    },
+    {
+      displayName:'Month',
+      id:'month'
+    },
+    {
+      displayName:'Year',
+      id:'year'
+    }
+  ]
 }

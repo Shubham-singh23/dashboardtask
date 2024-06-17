@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class CacheService {
 
-  public activeSidebarMenu = 'reception'
+  public activeSidebarMenu = 'admin';
+  public showBy = 'day';
 
   constructor() { }
 }

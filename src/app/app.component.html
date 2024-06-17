@@ -5,7 +5,7 @@
       <img class="logo" src="../assets/images/fetility_care.png" alt="logo">
     </div>
     <ul class="list-group sidebar-menu-list">
-      <li class="list-group-item sider-menu" [ngClass]="cache?.activeSidebarMenu === item?.id? 'sidebar-active-menu' : ''" sidebar-active-menu *ngFor="let item of constant?.sidebarMenu">{{ item.name }}</li>
+      <li (click)="selectMenu(item)" class="list-group-item sider-menu pointer" [ngClass]="cache?.activeSidebarMenu === item?.id? 'sidebar-active-menu' : ''" sidebar-active-menu *ngFor="let item of constant?.sidebarMenu">{{ item.displayName }}</li>
     </ul>
   </div>
 
@@ -15,7 +15,7 @@
     <div class="title-bar p-2">
       <div class="row">
         <div class="col mt-auto"><h5>Admin</h5></div>
-        <div class="col"></div>
+        <!-- <div class="col"></div> -->
         <div class="col">
           <div class="row profile-row">
             <div class="col profile-img-col"><img class="profile-img" src="../assets/images/profile.png" alt="profile"></div>
@@ -32,7 +32,197 @@
     </div>
     <!-- Content Area -->
     <div class="content-area bg-white flex-grow-1 p-3">
-      <p>This is the content area.</p>
+      <!-- First Row -->
+      <div class="row py-2 px-3">
+        <div class="col">
+          <h5>Summary</h5>
+        </div>
+        <div class="col width-fit">
+          <div class="container">
+            <ul id="myTabs" class="list-group flex-row nav-list" role="tablist" data-tabs="tabs">
+              <li (click)="showBy(item)" class="list-group-item nav-li pointer" [ngClass]="cache?.showBy === item?.id? 'active-nav-li' : ''" sidebar-active-menu *ngFor="let item of constant?.showBy">{{ item.displayName }}</li>
+            </ul>
+          </div>  
+        </div>
+        <div class="col width-fit">
+          <div class="row py-1">
+            <div class="col width-fit px-0"><i class="fa-solid fa-calendar-days"></i></div>
+            <div class="col"> 17 Apr 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="m-2">
+  
+      <!-- Second Row -->
+      <div class="row">
+        <div class="row p-0 ms-0">
+          <div class="col">
+            <div class="row dash-card p-2 m-2">
+              <div class="col width-fit">
+                <img class="icon" src="../assets/images/note.png" alt="note">
+              </div>
+              <div class="col width-fit">
+                <div class="row">Cycle Witnessed</div>
+                <div class="row fw-bold">800</div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row dash-card p-2 m-2">
+              <div class="col width-fit">
+                <img class="icon" src="../assets/images/note.png" alt="note">
+              </div>
+              <div class="col">
+                <div class="row">Cycle Matched</div>
+                <div class="row fw-bold">720</div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row dash-card p-2 m-2">
+              <div class="col width-fit">
+                <img class="icon" src="../assets/images/note.png" alt="note">
+              </div>
+              <div class="col">
+                <div class="row">Planned</div>
+                <div class="row fw-bold">800</div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row dash-card p-2 m-2">
+              <div class="col width-fit">
+                <img class="icon" src="../assets/images/note.png" alt="note">
+              </div>
+              <div class="col">
+                <div class="row">Total Transfer</div>
+                <div class="row fw-bold">650</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Third Row -->
+       <div class="row">
+        <div class="row ms-0">
+          <div class="col dash-card p-2 m-2">
+            <div class="row mb-3">
+              <h5>Witness Report</h5>
+            </div>
+            <div class="row">
+              <div class="col d-flex justify-content-center text-center">
+                <div style="display: block;">
+                  <canvas 
+                  baseChart
+                  width="150"
+                  height="150"
+                  type="doughnut"
+                  [data] = "doughnutChartData1"
+                  [options]="doughnutChartOptions"
+                  >
+                  </canvas>
+                  <div class="mt-2"><h4>Matched 80%</h4></div>
+                </div>
+              </div>
+              <div class="col d-flex justify-content-center text-center">
+                <div style="display: block;">
+                  <canvas 
+                  baseChart
+                  width="150"
+                  height="150"
+                  type="doughnut"
+                  [data] = "doughnutChartData2"
+                  [options]="doughnutChartOptions"
+                  >
+                  </canvas>
+                  <div class="mt-2"><h4>Mismatched 20%</h4></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col dash-card p-2 m-2">
+            <div class="row mb-3">
+              <h5>Semen Collection</h5>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div style="display: block;">
+                  <canvas 
+                  baseChart
+                  width="150"
+                  height="150"
+                  type="doughnut"
+                  [data] = "doughnutChartData3"
+                  [options]="doughnutChartOptions2"
+                  >
+                  </canvas>
+                </div>
+              </div>
+              <div class="col">
+                <div class="row">
+                  <div class="col border-end">
+                    <div class="row">
+                      <h6 class="mb-0">Checked-In</h6>
+                      <p class="mb-0">New</p>
+                      <p class="mb-0"><b>68%</b></p>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <p class="mb-0">Follow-up</p>
+                      <p class="mb-0"><b>32%</b></p>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="row">
+                      <h6 class="mb-0">Scheduled</h6>
+                      <p class="mb-0">New</p>
+                      <p class="mb-0"><b>68%</b></p>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <p class="mb-0">Follow-up</p>
+                      <p class="mb-0"><b>32%</b></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       </div>
+       <!-- Forth Row -->
+       <div class="row py-2 px-2">
+        <h5 class="p-0 mb-3"><b>{{tableName}}</b></h5>
+        <table class="table">
+          <thead class="table-light tab-head">
+            <tr>
+              <th scope="col">Date & Time</th>
+              <th scope="col">Patient Name</th>
+              <th scope="col">Age</th>
+              <th scope="col">Mobile Number</th>
+              <th scope="col">Reason of visit</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let patient of dataSerivces?.pendingPatients">
+              <td>
+                <div class="row data">{{patient?.date}}</div>
+                <div class="row data">{{patient?.time}}</div>
+              </td>
+              <td>
+                <div class="row data">{{patient?.name}}</div>
+                <div class="row data "><span class="text-primary p-0 m-0 width-fit">{{patient?.id}}</span><span class="width-fit">| {{patient?.gender}}</span></div>
+              </td>
+              <td>{{patient?.age}} yrs</td>
+              <td>{{patient?.mobNumber}}</td>
+              <td>{{patient?.reasonOfVisit}}</td>
+              <td><i class="fa-solid fa-ellipsis-vertical pointer" style="color: #eb9a04;"></i></td>
+            </tr>
+          </tbody>
+        </table>
+       </div>
     </div>
   </div>
 </div>
